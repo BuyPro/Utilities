@@ -18,6 +18,8 @@ var prop,
         }
     },
     Sequence = function (initial, transform) {
+        initial = initial || 0;
+
         if (!transform && initial.bind) {
             transform = initial;
             initial = 0;
@@ -28,7 +30,7 @@ var prop,
         this.current = initial || 0;
         this.transform = t.bind(this);
         this.next = function () {
-            this.current = this.transform();
+            this.current = this.transform(this.current);
             return this.current;
         };
         this.get = function () {
