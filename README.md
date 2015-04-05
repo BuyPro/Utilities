@@ -56,3 +56,11 @@ any sort of data sequence to be consumed at the pace of the calling program.
 Access is provided by two methods; the first (`Sequence.get()`) returns the current value and is analogous to simply
 accessing the `Sequence.current` property, and the second (`Sequence.next()`) generates and returns the next value in
 the sequence.
+
+###JSN
+The JSN module provides functions for manipulating JSON objects. It currently contains functions for:
+
+* Creating shallow copies of objects
+* Merging the properties of a second json object into another
+* Getting the property names of an object as an array
+* Filtering the properties of an object based on an array of property names

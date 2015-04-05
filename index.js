@@ -35,6 +35,43 @@ var prop,
             return this.current;
         };
         return this;
+    },
+    jsn = {
+        merge: function (obj1, obj2) {
+            var prop;
+            for (prop in obj2) {
+                if (obj2.hasOwnProperty(prop)) {
+                    obj1[prop] = obj2[prop];
+                }
+            }
+            return obj1;
+        },
+        copy: function (obj) {
+            return jsn.merge({}, obj);
+        },
+        keys: function (obj) {
+            var keys = [],
+                prop;
+            for (prop in obj) {
+                if (obj.hasOwnProperty(prop)) {
+                    keys.push(prop);
+                }
+            }
+            return keys;
+        },
+        filter: function (obj, keys) {
+            var i,
+                len = keys.length,
+                cur,
+                ret = {};
+            for (i = 0; i < len; i += 1) {
+                cur = keys[i];
+                if (obj.hasOwnProperty(cur)) {
+                    ret[cur] = obj[cur];
+                }
+            }
+            return ret;
+        }
     };
 
 for (prop in encode.codes) {
@@ -45,5 +82,6 @@ for (prop in encode.codes) {
 
 module.exports = {
     ansi: encode,
-    Sequence: Sequence
+    Sequence: Sequence,
+    jsn: jsn
 };
