@@ -19,7 +19,7 @@ console.log(ansi.red("as this is"));
 
 ##Current Modules
 
-###ANSI
+###ansi
 The ANSI module is used to wrap a string in ANSI codes to change the text display in terminals.
 This is useful for making things a bit easier to read when, for example, you're printing out all
 of the requests to the server to the console for debugging. Each code has its own self-named method
@@ -39,3 +39,20 @@ codes: {
   bold: "\x1B[1m"
 }
 ```
+
+###Sequence
+The Sequence object is used to create a sequence of values from a given starting value, using
+a specified method to generate the next value. It can be thought of as a very simple implementation
+of a generator.
+
+The contructor is of the form `NumericStream([initial] [, transform])` where `initial` is the first
+value in the sequence (default `0`) and `transform` is a function of the form `transform(n)` where `n`
+is the current value of the sequence. `transform` should return the next value in the sequence, and
+defaults to `n + 1`.
+
+By providing both a non-numeric initial value and a custom transform function, Sequence can generate
+any sort of data sequence to be consumed at the pace of the calling program.
+
+Access is provided by two methods; the first (`Sequence.get()`) returns the current value and is analogous to simply
+accessing the `Sequence.current` property, and the second (`Sequence.next()`) generates and returns the next value in
+the sequence.

@@ -17,16 +17,22 @@ var prop,
             bold: "\x1B[1m"
         }
     },
-    NumericStream = function (initial, transform) {
-        var t = transform || function () {
-            this.current += 1;
+    Sequence = function (initial, transform) {
+        if (!transform && initial.bind) {
+            transform = initial;
+            initial = 0;
+        }
+        var t = transform || function (n) {
+            return n + 1;
         };
         this.current = initial || 0;
         this.transform = t.bind(this);
         this.next = function () {
-            var ret = this.current;
-            this.transform();
-            return ret;
+            this.current = this.transform();
+            return this.current;
+        };
+        this.get = function () {
+            return this.current;
         };
         return this;
     };
@@ -39,5 +45,5 @@ for (prop in encode.codes) {
 
 module.exports = {
     ansi: encode,
-    NumericStream: NumericStream
+    Sequence: Sequence
 };
