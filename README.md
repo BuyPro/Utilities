@@ -17,9 +17,9 @@ console.log(util.ansi.red("This is just as valid"));
 console.log(ansi.red("as this is"));
 ```
 
-##Current Modules
+## Current Modules
 
-###ansi
+### ansi
 The ANSI module is used to wrap a string in ANSI codes to change the text display in terminals.
 This is useful for making things a bit easier to read when, for example, you're printing out all
 of the requests to the server to the console for debugging. Each code has its own self-named method
@@ -40,7 +40,7 @@ codes: {
 }
 ```
 
-###Sequence
+### Sequence
 The Sequence object is used to create a sequence of values from a given starting value, using
 a specified method to generate the next value. It can be thought of as a very simple implementation
 of a generator.
@@ -57,7 +57,7 @@ Access is provided by two methods; the first (`Sequence.get()`) returns the curr
 accessing the `Sequence.current` property, and the second (`Sequence.next()`) generates and returns the next value in
 the sequence.
 
-###JSN
+### JSN
 The JSN module provides functions for manipulating JSON objects. It currently contains functions for:
 
 * Creating shallow copies of objects
