@@ -1,6 +1,6 @@
 {
   "name": "bp-utilities",
-  "version": "1.4.2",
+  "version": "1.5.0",
   "description": "Basic utilities used across modules",
   "main": "index.js",
   "repository": {

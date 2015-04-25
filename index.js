@@ -74,6 +74,22 @@ var prop,
             }
             return ret;
         }
+    },
+    url = {
+        parse: function (url) {
+            /*
+             * Using reURL:
+             *      - To get parts of a url, use reURL.exec(target)
+             *      - The return value will contain 5 indexes
+             *      - 0 - The Full string matched
+             *      - 1 - The protocol
+             *      - 2 - The domain
+             *      - 3 - The path
+             *      - 4 - The (unparsed) query string
+             */
+            var reURL = /(\w*)?:(?:\\\\|\/\/)(\S*?(?=\\|\/))(\S*?(?=\?|$))\??(\S*)/;
+            return reURL.exec(url);
+        }
     };
 
 for (prop in encode.codes) {
