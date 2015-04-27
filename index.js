@@ -90,6 +90,24 @@ var prop,
             var reURL = /(\w*)?:(?:\\\\|\/\/)(\S*?(?=\\|\/))(\S*?(?=\?|$))\??(\S*)/;
             return reURL.exec(url);
         }
+    },
+    mime = {
+        type: {
+            'html': 'text/html',
+            'js': 'application/javascript',
+            'css': 'text/css',
+            'json': 'application/json',
+            'png': 'image/png',
+            'jpeg': 'image/jpeg',
+            'gif': 'image/gif',
+            'bmp': 'image/bmp',
+            'txt': 'text/plain'
+        },
+        find: function(path) {
+            // Regex matches everything before the final dot,
+            // plus the final dot itself
+            return mime.type[path.replace(/^.*(?=\.)\./, '')];
+        }
     };
 
 for (prop in encode.codes) {
@@ -101,5 +119,7 @@ for (prop in encode.codes) {
 module.exports = {
     ansi: encode,
     Sequence: Sequence,
-    jsn: jsn
+    jsn: jsn,
+    url: url,
+    mime: mime
 };
